@@ -27,7 +27,7 @@ prepare() {
 
 build() {
     mkdir $startdir/bin
-    go build -o $startdir/bin/${pkgname} $_go_proj_path/cmd/rocketmq_exporter
+    go build -o $startdir/bin/${pkgname} $_go_proj_path/RocketmqExporter
     ls -l $startdir/bin
 }
 
