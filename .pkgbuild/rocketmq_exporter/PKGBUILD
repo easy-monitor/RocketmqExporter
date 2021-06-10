@@ -1,4 +1,4 @@
-pkgname=sqlserver_exporter
+pkgname=rocketmq_exporter
 pkgver=VERSION  # placeholder
 pkgver() {
     # 工具名: 打包-基础包
