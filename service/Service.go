@@ -18,7 +18,7 @@ func MsgUnconsumedCount(rocketmqConsoleIPAndPort string) *model.MsgDiff {
 	}
 
 	//获取不纳入监控的topicNameList
-	var ignoredTopicNameList = constant.GetIgnoredTopicArray()
+	var ignoredTopicNameList = constant.IgnoredTopicArray
 
 	var rt *model.MsgDiff = new(model.MsgDiff)
 

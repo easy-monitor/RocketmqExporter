@@ -1,11 +1,11 @@
 package main
 
 import (
-	"RocketmqExporter/constant"
+	"strconv"
+
 	"RocketmqExporter/model"
 	"RocketmqExporter/service"
 	"github.com/prometheus/client_golang/prometheus"
-	"strconv"
 )
 
 type Exporter struct {
@@ -75,8 +75,7 @@ func DeclareExporter(metricsPrefix string) *Exporter {
 
 func (exporter *Exporter) Collect(ch chan<- prometheus.Metric) {
 
-	rocketmqConsoleIPAndPort := constant.GetRocketmqConsoleIPAndPort()
-
+	rocketmqConsoleIPAndPort := RocketmqConsoleIPAndPort
 	var msgDiff *model.MsgDiff = service.MsgUnconsumedCount(rocketmqConsoleIPAndPort)
 
 	if msgDiff != nil && msgDiff.MsgDiff_Details != nil {
