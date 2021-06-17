@@ -5,12 +5,17 @@ import (
 	"net/http"
 )
 
-func HttpUrl(url string) []byte {
-	req, err := http.NewRequest("GET", url, nil)
+func HttpUrl(method string, url string, cookie string) []byte {
+	req, err := http.NewRequest(method, url, nil)
 	if err != nil {
 		return nil
 	}
-
+	if cookie != "" {
+		req.AddCookie(&http.Cookie{
+			Name:  "JSESSIONID",
+			Value: cookie,
+		})
+	}
 	//req.Header.Add("accept", "application/json")
 	//req.Header.Add("content-type", "application/json")
 

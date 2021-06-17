@@ -5,14 +5,15 @@ import (
 	"RocketmqExporter/model"
 	"RocketmqExporter/utils"
 	"RocketmqExporter/wrapper"
+
 	//"fmt"
 	"strings"
 )
 
-func MsgUnconsumedCount(rocketmqConsoleIPAndPort string) *model.MsgDiff {
+func MsgUnconsumedCount(rocketmqConsoleIPAndPort string, sessionId string) *model.MsgDiff {
 
 	//获取rocketmq集群中的topicNameList
-	topicNameArray := wrapper.GetTopicNameList(rocketmqConsoleIPAndPort)
+	topicNameArray := wrapper.GetTopicNameList(rocketmqConsoleIPAndPort, sessionId)
 	if topicNameArray == nil {
 		return nil
 	}
@@ -55,7 +56,7 @@ func MsgUnconsumedCount(rocketmqConsoleIPAndPort string) *model.MsgDiff {
 			continue
 		}
 
-		var data *model.ConsumerList_By_Topic = wrapper.GetConsumerListByTopic(rocketmqConsoleIPAndPort, topicName)
+		var data *model.ConsumerList_By_Topic = wrapper.GetConsumerListByTopic(rocketmqConsoleIPAndPort, topicName, sessionId)
 
 		if data == nil {
 			continue

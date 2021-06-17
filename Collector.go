@@ -5,6 +5,7 @@ import (
 
 	"RocketmqExporter/model"
 	"RocketmqExporter/service"
+
 	"github.com/prometheus/client_golang/prometheus"
 )
 
@@ -76,7 +77,7 @@ func DeclareExporter(metricsPrefix string) *Exporter {
 func (exporter *Exporter) Collect(ch chan<- prometheus.Metric) {
 
 	rocketmqConsoleIPAndPort := RocketmqConsoleIPAndPort
-	var msgDiff *model.MsgDiff = service.MsgUnconsumedCount(rocketmqConsoleIPAndPort)
+	var msgDiff *model.MsgDiff = service.MsgUnconsumedCount(rocketmqConsoleIPAndPort, JSESSIONID)
 
 	if msgDiff != nil && msgDiff.MsgDiff_Details != nil {
 		var msg_Diff_Detail_Array []*model.MsgDiff_Detail = msgDiff.MsgDiff_Details

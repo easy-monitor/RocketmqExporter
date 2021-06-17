@@ -1,2 +1,9 @@
 port: 20000
 ignoredTopics: RMQ_SYS_TRANS_HALF_TOPIC,BenchmarkTest,OFFSET_MOVED_EVENT,TBW102,SELF_TEST_TOPIC,DefaultCluster,broker-b,broker-a
+module:
+  - name: rocketmq1
+    username: user1
+    password: user1
+  - name: rocketmq2
+    username: user2
+    password: aaa
